@@ -1,0 +1,7 @@
+debian/0001-use-system-python.patch
+debian/0002-use-system-exim4.patch
+debian/0003-use-python3.patch
+debian/0004-use-sh.patch
+debian/0005-use-bash.patch
+upstream/0001-allow-symlinks.patch
+upstream/0002-fix-FTCBFS.patch

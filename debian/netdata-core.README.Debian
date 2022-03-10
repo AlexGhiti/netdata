@@ -1,0 +1,43 @@
+netdata for Debian
+==================
+
+1. Web UI
+---------
+
+If you install netdata-web, the web UI will be available by default on
+http://localhost:19999
+
+
+2. Plugins
+----------
+
+netdata has a lot of plugins. Some of them need extra configuration on the
+host system to work. Here are some notes for that...
+
+2.1 mysql/mariadb
+-----------------
+
+netdata by default tries to read /etc/mysql/debian.cnf and use the
+debian-sys-maint credentials to access the database.
+
+For Debian 10 and older, you *could* (but shouldn't, see below) grant netdata
+access to debian.cnf by setting the group ownership to netdata.
+
+For Debian 11 and newer, the debian.cnf is no longer used.
+
+Instead (and preferably also for Debian 10 and older), a dedicated read-only
+database user should be created:
+
+  $ sudo mariadb -u root
+  MariaDB > create user 'netdata'@'localhost';
+  MariaDB > grant usage on *.* to 'netdata'@'localhost';
+  MariaDB > flush privileges;
+  MariaDB > exit
+
+Note that this will allow the netdata to connect to mariadb but *not* read
+any data (which it does not need to).
+
+Naming the user 'netdata' saves you from configuring anything in netdata itself
+and it will automatically pick it up once the user has been created.
+
+ -- Daniel Baumann <daniel.baumann@progress-linux.org>  Tue, 09 Feb 2021 11:03:31 +0100

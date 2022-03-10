@@ -1,0 +1,10 @@
+# See Debian policy 10.9. apps.plugin has extra capabilities, so don't let
+# normal users run it.
+netdata-core-no-sse: non-standard-executable-perm usr/lib/netdata/plugins.d/apps.plugin 0754 != 0755
+
+# user created during install
+netdata-core-no-sse: maintainer-script-should-not-use-recursive-chown-or-chmod
+
+# plugins that require root access
+netdata-core-no-sse: setuid-binary usr/lib/netdata/plugins.d/freeipmi.plugin 4754 root/root
+netdata-core-no-sse: setuid-binary usr/lib/netdata/plugins.d/perf.plugin 4754 root/root

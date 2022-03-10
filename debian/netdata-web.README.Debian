@@ -1,0 +1,20 @@
+netdata-web for Debian
+======================
+
+1. Content-Security-Policy (CSP)
+--------------------------------
+
+By default netdata uses its own embedded webserver, listening to localhost:19999
+only. When exposing netdata to the network, it is recommended for security
+reasons to use a reverse proxy in front of it, such as apache2 (see
+netdata-apache2 package).
+
+If the proxy wants to set Content-Security-Policy headers, it can use the
+following for netdata (for apache2):
+
+	Header always set Content-Security-Policy "default-src 'unsafe-inline' \
+	http://localhost:19999 https: 'self' 'unsafe-eval'; script-src \
+	'unsafe-inline' https: 'self' 'unsafe-eval'; style-src https: 'self' \
+	'unsafe-inline'"
+
+ -- Daniel Baumann <daniel.baumann@progress-linux.org>  Mon, 12 Aug 2019 20:11:00 +0200

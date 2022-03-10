@@ -1,0 +1,2 @@
+netdata-apache2: non-standard-apache2-configuration-name netdata.conf != netdata-apache2.conf
+netdata-apache2: web-application-should-not-depend-unconditionally-on-apache2

@@ -1,0 +1,17 @@
+Author: Helmut Grohne <helmut@subdivi.de>
+Description: Fixes FTCBFS by not abusing AC_CHECK_FILE (Closes: #982523).
+
+diff -Naurp netdata.orig/configure.ac netdata/configure.ac
+--- netdata.orig/configure.ac
++++ netdata/configure.ac
+@@ -1025,8 +1025,8 @@ if test "${build_target}" = "linux" -a "
+         [#include <linux/bpf.h>]
+     )
+ 
+-    AC_CHECK_FILE(
+-        externaldeps/libbpf/libbpf.a,
++    AS_IF(
++        [test -e externaldeps/libbpf/libbpf.a],
+         [have_libbpf=yes],
+         [have_libbpf=no]
+     )

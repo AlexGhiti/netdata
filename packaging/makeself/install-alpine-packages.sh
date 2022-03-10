@@ -1,0 +1,45 @@
+#!/usr/bin/env sh
+#
+# Installation script for the alpine host
+# to prepare the static binary
+#
+# Copyright: SPDX-License-Identifier: GPL-3.0-or-later
+#
+# Author: Paul Emm. Katsoulakis <paul@netdata.cloud>
+
+# Add required APK packages
+apk add --no-cache -U \
+  alpine-sdk \
+  autoconf \
+  automake \
+  bash \
+  binutils \
+  cmake \
+  curl \
+  elfutils-dev \
+  gcc \
+  git \
+  gnutls-dev \
+  gzip \
+  libelf-static \
+  libmnl-dev \
+  libnetfilter_acct-dev \
+  libtool \
+  libuv-dev \
+  libuv-static \
+  lz4-dev \
+  lz4-static \
+  make \
+  ncurses \
+  netcat-openbsd \
+  openssh \
+  pkgconfig \
+  protobuf-dev \
+  snappy-dev \
+  snappy-static \
+  util-linux-dev \
+  wget \
+  xz \
+  zlib-dev \
+  zlib-static ||
+  exit 1

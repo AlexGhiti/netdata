@@ -1,0 +1,13 @@
+Author: Daniel Baumann <daniel.baumann@progress-linux.org>
+Description: Using bash instead of sh for edit-config.
+ It reads /etc/profile which often contains bash specific configuration.
+
+diff -Naurp netdata.orig/system/edit-config.in netdata/system/edit-config.in
+--- netdata.orig/system/edit-config.in
++++ netdata/system/edit-config.in
+@@ -1,4 +1,4 @@
+-#!/usr/bin/env sh
++#!/bin/bash
+ 
+ [ -f /etc/profile ] && . /etc/profile
+ 
